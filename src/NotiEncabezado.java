@@ -1,11 +1,9 @@
-public class NotiEncabezado extends NotificacionDecorator{
-    public NotiEncabezado(Notificacion notificacionDecorada) {
-        super(notificacionDecorada);
-    }
+public class NotiEncabezado implements Notificacion{
+
+    public NotiEncabezado(){}
 
     @Override
     public void enviar(String mensaje) {
-        String mensajeConEncabezado = "Encabezado: " + mensaje;
-        super.enviar(mensajeConEncabezado);
+        System.out.println("Mensaje: " + mensaje);
     }
 }

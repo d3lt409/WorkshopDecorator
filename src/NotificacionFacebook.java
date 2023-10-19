@@ -1,6 +1,13 @@
-public class NotificacionFacebook  implements  Notificacion{
-    @Override
-    public void enviar(String mensaje) {
-        System.out.println("Enviando mensaje a través de Facebook: " + mensaje);
+public class NotificacionFacebook extends NotificacionDecorator{
+
+    public NotificacionFacebook(Notificacion notificacionDecorada) {
+        super(notificacionDecorada);
     }
+
+    @Override
+    public void enviar(String message) {
+        System.out.println("Mensaje enviado por Facebook");
+        super.enviar(message);
+    }
+
 }

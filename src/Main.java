@@ -1,21 +1,19 @@
 public class Main {
     public static void main(String[] args) {
         // Crear notificaciones base
-        Notificacion notificacionTexto = new SMSMensaje();
-        Notificacion notificacionFacebook = new NotificacionFacebook();
-        Notificacion notificacionSlack = new NotificacionSlack();
+        Notificacion noti = new NotificacionFacebook(new NotificacionSlack(new SMSMensaje(new NotiEncabezado())));
 
         // Enviar notificaciones básicas
-        notificacionTexto.enviar("Mensaje de texto sin decorar");
-        notificacionFacebook.enviar("Mensaje de Facebook sin decorar");
-        notificacionSlack.enviar("Mensaje de Slack sin decorar");
-
-        // Decorar notificaciones
-        Notificacion notificacionDecorada1 = new NotiEncabezado(notificacionTexto);
-        Notificacion notificacionDecorada2 = new NotiEncabezado(notificacionFacebook);
-
+        noti.enviar("Mensaje de texto sin decorar");
+        System.out.println("--------------------------------");
+        noti.enviar("Mensaje de Facebook sin decorar");
+        System.out.println("--------------------------------");
+        noti.enviar("Mensaje de Slack sin decorar");
+        System.out.println("--------------------------------");
         // Enviar notificaciones decoradas
-        notificacionDecorada1.enviar("Mensaje de texto decorado");
-        notificacionDecorada2.enviar("Mensaje de Facebook decorado");
+        noti.enviar("Mensaje de texto decorado");
+        System.out.println("--------------------------------");
+        noti.enviar("Mensaje de Facebook decorado");
+        System.out.println("--------------------------------");
     }
 }
